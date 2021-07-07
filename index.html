@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Killer Moster</title>
+    <link rel="shortcut icon" href="./images/Icons_24.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="section scores">
+            <div class="score">
+                <img src="./images/male_hero.png">
+                <h1>Player</h1>
+                <div class="life-bar">
+                    <div class="life"
+                        :class="{medium: playerLife < 50}"
+                        :class="{low: playerLife <= 25}"
+                        :style="{width: playerLife + '%'}"
+                    ></div>
+                </div>
+                <div>{{playerLife}}%</div>
+            </div>
+            <div class="score">
+                <img src="./images/BigGoblin_monster.png">
+                <h1>Monster</h1>
+                <div class="life-bar">
+                    <div class="life"
+                        :class="{medium: monsterLife < 50}"
+                        :class="{low: monsterLife < 25}"
+                        :style="{width: monsterLife + '%'}"  
+                    ></div>
+                </div>
+                <div>{{monsterLife}}%</div>
+            </div>
+        </div>
+        <div class="section result" v-if="hasResult">
+            <div class="win" v-if="monsterLife == 0">
+                <p>Congratulations, you win!</p>
+            </div>
+
+            <div class="lose" v-if="playerLife == 0">
+                <p>Defeat, you lost!</p>
+            </div>
+
+        </div>
+        <div class="section btns"></div>
+        <div class="section logs"></div>
+    </div>
+    
+    
+</body>
+<script src="./app.js"></script>
+</html>
