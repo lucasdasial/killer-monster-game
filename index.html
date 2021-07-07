@@ -13,12 +13,11 @@
     <div id="app">
         <div class="section scores">
             <div class="score">
-                <img src="./images/male_hero.png">
+                <img  class="hero" src="./images/male_hero.png">
                 <h1>Player</h1>
                 <div class="life-bar">
                     <div class="life"
-                        :class="{medium: playerLife < 50}"
-                        :class="{low: playerLife <= 25}"
+                        :class="[{medium: playerLife < 50},{low: playerLife<= 25}]"
                         :style="{width: playerLife + '%'}"
                     ></div>
                 </div>
@@ -29,8 +28,7 @@
                 <h1>Monster</h1>
                 <div class="life-bar">
                     <div class="life"
-                        :class="{medium: monsterLife < 50}"
-                        :class="{low: monsterLife < 25}"
+                        :class="[{medium: monsterLife < 50},{low: monsterLife<= 25}]"
                         :style="{width: monsterLife + '%'}"  
                     ></div>
                 </div>
@@ -38,17 +36,43 @@
             </div>
         </div>
         <div class="section result" v-if="hasResult">
-            <div class="win" v-if="monsterLife == 0">
+            <div class="win"
+                v-if="monsterLife == 0">
                 <p>Congratulations, you win!</p>
             </div>
 
-            <div class="lose" v-if="playerLife == 0">
+            <div class="lose" 
+                v-if="playerLife == 0">
                 <p>Defeat, you lost!</p>
             </div>
 
         </div>
-        <div class="section btns"></div>
-        <div class="section logs"></div>
+        <div class="section btns">
+            <template v-if="running">
+                <button 
+                    class="btn attack" 
+                    @click="attack(false)">Attack</button>
+                    <button 
+                        class="btn sp-attack" 
+                        @click="attack(true)" >Special Attack</button>
+                    <button 
+                        @click="healHurt" 
+                        class="btn heal">Heal</button>
+                    <button 
+                        @click="giveUp" 
+                        class="btn give-up">Give Up</button>
+            </template>
+            
+            <button @click="startGame" v-else class="btn new-game">Start game</button>
+        </div>
+        <div v-if="logs.length"
+            class="section logs">
+            <ul>
+                <li v-for="log in logs"
+                :class="log.cls" 
+                class="log">{{log.text}}</li>
+            </ul>
+        </div>
     </div>
     
     

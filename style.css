@@ -7,13 +7,26 @@ html,body{
 img{
     width: 60px;
 }
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.hero{
+    transform: rotateY(180deg);
+}
 
 #app{
     display: flex;
     flex-direction: column;
+   
+    align-items: center;
+    justify-content: center;
 }
 
 .section{
+    width: 100%;
+    max-width: 800px;
     margin: 10px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(78, 78, 78, 0.5);
@@ -42,6 +55,8 @@ img{
     border: 1px solid #AAA;
     margin-bottom: 5px;
     overflow: hidden;
+
+    
 }
 
 .life-bar .life{
@@ -49,6 +64,7 @@ img{
     justify-content: center;
     height: 100%;
     background-color: rgb(0, 255, 76);
+    transition: all .3s linear;
 }
 
 .life-bar .life.medium{
@@ -70,4 +86,68 @@ img{
 }
 .result .lose{
     color: rgb(233, 44, 60);
+}
+
+/*----------btns-----------*/
+
+.btns{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    cursor: pointer;
+    width: 150px;
+    margin:10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgb(240, 236, 231);
+
+}
+.attack{
+    background-color: rgb(240, 55, 55);
+    color: white;
+}
+
+.sp-attack{
+    background-color: rgb(240, 162, 18);
+    
+}
+.heal{
+    background-color: rgb(37, 216, 147);
+}
+
+.give-up{
+    color: #AAA;
+}
+
+.new-game{
+    background-color: rgb(13, 122, 223);
+}
+
+/*----------log----------*/
+.logs ul li{
+    margin: 10px;
+    padding: 15px;
+    border-radius: 6px;
+
+    font-weight: 500;
+
+    display: flex;
+    justify-content: center;
+    
+
+
+}
+.healou{
+    background-color: rgb(135, 236, 174);
+}
+.player{
+    background-color: rgb(165, 202, 223);
+}
+.monster{
+    background-color: rgb(248, 153, 140);
+
 }
